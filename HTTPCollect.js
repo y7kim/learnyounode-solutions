@@ -1,0 +1,15 @@
+var http = require('http');
+var url = process.argv[2];
+
+http.get(url, function(req) {
+    req.setEncoding('utf8');
+    var result = "";
+    req.on("data", function (data) {
+        result += data;
+        });
+    req.on("end", function () {
+        console.log(result.length);
+        console.log(result);
+        });
+});
+    
